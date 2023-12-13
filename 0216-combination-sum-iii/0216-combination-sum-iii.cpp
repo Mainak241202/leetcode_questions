@@ -9,7 +9,7 @@ public:
             return;
         }
         for(int j=i;j<=9;j++){
-            //if(j>i && k<0) continue;
+            if(j>i && k<0) continue;
             temp.push_back(j);
             getSum(v,temp,j+1,n-j,k);
             temp.pop_back();
