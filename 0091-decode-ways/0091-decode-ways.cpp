@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int numDecodings(string s) {
+        int n = s.size();
+        vector<int> dp(n+1);
+        dp[0] = 1;
+        if(s[0]=='0') dp[1] = 0;
+        else dp[1] = 1;
+        for(int i=2;i<=n;i++){
+            int c1,c2;
+            if(s[i-1]=='0') c1=0;
+            else c1 = dp[i-1];
+            if(stoi(s.substr(i-2,2))>0 && stoi(s.substr(i-2,2))<=26 && s[i-2]!='0') c2 = dp[i-2];
+            else c2 = 0;
+            dp[i] = c1 + c2;
+        }
+        return dp[n];
+    }
+};
